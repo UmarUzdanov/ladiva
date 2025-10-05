@@ -1,0 +1,169 @@
+Website Structure & User Journeys
+User Journey 1: Discovery & Trust Building
+"I need help with tile but don't know this designer"
+Homepage
+
+Hero: "Your Tile Vision, Expertly Guided" with portfolio imagery
+3-Step Process preview (Function → Style → Look)
+Featured projects carousel (3-4 stunning transformations)
+"Why Work With Me" section (Architessa partnership benefits)
+Call-to-action: "Start Your Tile Journey" → leads to Style Quiz
+
+About
+
+Designer's story and connection to Architessa
+Credentials and expertise areas
+Philosophy: "From Overwhelmed to Inspired"
+Access to Architessa's showrooms and collections
+Client testimonials
+Call-to-action: "See My Work" → Portfolio
+
+
+User Journey 2: Inspiration Seeking
+"I want ideas for my space"
+Portfolio (main page)
+
+Filter by: Room Type, Style, Tile Material
+Grid of project thumbnails with hover effects
+Each shows: Room type, style, and key materials used
+
+Individual Project Pages
+
+Before/after photos
+The challenge (functional requirements)
+Style direction chosen
+Materials selected and why
+"Shop Similar Tiles" links to Architessa
+Related projects at bottom
+
+Style Guide (interactive page)
+
+5 main residential styles with visual examples:
+
+Farmhouse
+Coastal
+Minimalist & Modern
+Mid-Century Modern
+Bohemian
+
+
+"Find Your Style" quiz
+Each style links to relevant portfolio projects
+
+
+User Journey 3: Education & Research
+"I need to understand tile before I choose"
+Learn (resource hub)
+
+Choosing Tile 101: Simplified version of the guide
+
+Understanding your space's needs
+Defining your aesthetic
+Matching function with style
+
+
+Material Guide: When to use Porcelain vs Ceramic vs Natural Stone
+Room-Specific Guides:
+
+Kitchen Backsplash Essentials
+Bathroom Tile: Balancing Beauty & Safety
+Fireplace Surrounds: Heat & Style
+
+
+Trending Now: Current tile trends at Architessa
+
+Blog
+
+Recent projects with detailed process stories
+Seasonal tile trends
+Maintenance tips
+Design inspiration posts
+FAQ articles
+
+
+User Journey 4: Ready to Start
+"I'm ready to work with this designer"
+Services
+
+Design Consultation (in-home or virtual)
+
+What's included
+Process overview
+Investment ranges
+
+
+Showroom Experience
+
+Guided tours at Architessa locations
+Hands-on material selection
+Exclusive access to designer collections
+
+
+Full-Service Design
+
+From concept to installation guidance
+Custom tile design options
+Project timeline
+
+
+Call-to-action: "Schedule Your Consultation"
+
+Contact
+
+Contact form with project questionnaire:
+
+Room type
+Timeline
+Style preferences (checkboxes)
+Budget range
+Location
+
+
+Phone number and email
+Architessa showroom locations
+Response time expectations
+
+
+User Journey 5: Decision Making
+"How do I know this is right for me?"
+Testimonials
+
+Client stories with photos
+Video testimonials
+Project outcomes
+Links to full project case studies
+
+FAQs
+
+Process questions
+Timing and scheduling
+Budget considerations
+Working with Architessa
+Installation (what's included/not included)
+
+
+Supporting Pages
+Style Quiz (interactive tool)
+
+5-7 visual preference questions
+Results: Your dominant style + secondary influence
+Recommended tiles from Architessa
+Portfolio projects in that style
+Call-to-action: "Explore This Style With Me"
+
+Free Resources (lead generation)
+
+Downloadable: "Homeowner's Tile Selection Checklist"
+"5 Mistakes to Avoid When Choosing Tile" PDF
+Email signup for design tips
+
+
+Navigation Structure
+Primary Menu: Home | About | Portfolio | Services | Learn | Contact
+Footer:
+
+Quick links to popular pages
+Architessa showroom locations
+Social media links
+Newsletter signup
+"Book a Consultation" button
