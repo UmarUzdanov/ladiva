@@ -41,12 +41,13 @@ export default function ServicesPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-[4/5] rounded-sm overflow-hidden relative">
+              <div className="relative rounded-sm overflow-hidden">
                 <Image
                   src="/images/design_consultation.png"
                   alt="Design Consultation"
-                  fill
-                  className="object-cover"
+                  width={800}
+                  height={1000}
+                  className="w-full h-auto"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
@@ -102,12 +103,13 @@ export default function ServicesPage() {
               transition={{ duration: 0.8 }}
               className="order-1 md:order-2"
             >
-              <div className="aspect-[4/5] rounded-sm overflow-hidden relative">
+              <div className="relative rounded-sm overflow-hidden">
                 <Image
                   src="/images/showroom_exp.png"
                   alt="Showroom Experience"
-                  fill
-                  className="object-cover"
+                  width={800}
+                  height={1000}
+                  className="w-full h-auto"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
@@ -126,12 +128,13 @@ export default function ServicesPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <div className="aspect-[4/5] rounded-sm overflow-hidden relative">
+              <div className="relative rounded-sm overflow-hidden">
                 <Image
                   src="/images/fullservice.png"
                   alt="Full-Service Design"
-                  fill
-                  className="object-cover"
+                  width={800}
+                  height={1000}
+                  className="w-full h-auto"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
@@ -180,13 +183,14 @@ export default function ServicesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="aspect-[21/9] rounded-sm overflow-hidden relative"
+            className="relative rounded-sm overflow-hidden"
           >
             <Image
               src="/images/tipical_project.png"
               alt="Typical Project Timeline"
-              fill
-              className="object-cover"
+              width={1400}
+              height={600}
+              className="w-full h-auto"
               sizes="(max-width: 768px) 100vw, 1400px"
             />
           </motion.div>

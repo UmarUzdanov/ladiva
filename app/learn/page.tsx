@@ -54,13 +54,14 @@ export default function LearnPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="aspect-[16/9] rounded-sm overflow-hidden relative mb-16"
+            className="relative rounded-sm overflow-hidden mb-16"
           >
             <Image
               src="/images/Gemini_Generated_Image_21dlum21dlum21dl.png"
               alt="Function Style Look Framework"
-              fill
-              className="object-cover"
+              width={1400}
+              height={788}
+              className="w-full h-auto"
               sizes="(max-width: 768px) 100vw, 1400px"
             />
           </motion.div>
@@ -146,12 +147,13 @@ export default function LearnPage() {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="group cursor-pointer"
               >
-                <div className="aspect-square rounded-sm overflow-hidden relative mb-6">
+                <div className="relative rounded-sm overflow-hidden mb-6">
                   <Image
                     src={item.image}
                     alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    width={600}
+                    height={600}
+                    className="w-full h-auto group-hover:scale-110 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
