@@ -11,6 +11,45 @@ type StyleCount = {
   [key: string]: number
 }
 
+// Image mapping for quiz questions
+const quizImages: Record<number, Record<string, string>> = {
+  0: { // Question 1 - Color palettes
+    'Farmhouse': '/architessa_images_downloaded/farmhouse-farmhouse-architessa.jpg',
+    'Coastal': '/architessa_images_downloaded/coastal-coastal-architessa.jpg',
+    'Minimalist & Modern': '/architessa_images_downloaded/minimalist-minimalist-architessa.webp',
+    'Mid-Century Modern': '/architessa_images_downloaded/mid-century-modern-mid-century-modern-architessa.png',
+    'Bohemian': '/architessa_images_downloaded/bohemian-bohemian-architessa.jpg'
+  },
+  1: { // Question 2 - Patterns
+    'Farmhouse': '/architessa_images_downloaded/subway-tile-subway-tile-architessa.jpg',
+    'Coastal': '/architessa_images_downloaded/pebble-tile-pebble-tile-architessa.webp',
+    'Minimalist & Modern': '/architessa_images_downloaded/porcelain-slabs-panels-porcelain-slabs-panels-architessa.jpg',
+    'Mid-Century Modern': '/architessa_images_downloaded/hexagon-hexagon.png',
+    'Bohemian': '/architessa_images_downloaded/zellige-look-zellige-look-architessa.jpg'
+  },
+  2: { // Question 3 - Textures
+    'Farmhouse': '/architessa_images_downloaded/ceramic-ceramic-architessa.webp',
+    'Coastal': '/architessa_images_downloaded/natural-stone-natural-stone-architessa.webp',
+    'Minimalist & Modern': '/architessa_images_downloaded/marble-look-marble-look-architessa.jpg',
+    'Mid-Century Modern': '/architessa_images_downloaded/wood-look-wood-look-architessa.jpg',
+    'Bohemian': '/architessa_images_downloaded/dimensional-3d-dimensional-3d-architessa.jpg'
+  },
+  3: { // Question 4 - Space descriptions
+    'Farmhouse': '/architessa_images_downloaded/farmhouse-farmhouse-architessa.jpg',
+    'Coastal': '/architessa_images_downloaded/coastal-coastal-architessa.jpg',
+    'Minimalist & Modern': '/architessa_images_downloaded/modern-modern-architessa.jpg',
+    'Mid-Century Modern': '/architessa_images_downloaded/contemporary-contemporary-architessa.jpg',
+    'Bohemian': '/architessa_images_downloaded/bohemian-bohemian-architessa.jpg'
+  },
+  4: { // Question 5 - Material combinations
+    'Farmhouse': '/architessa_images_downloaded/subway-tile-subway-tile-architessa.jpg',
+    'Coastal': '/architessa_images_downloaded/glass-tile-glass-tile-architessa.webp',
+    'Minimalist & Modern': '/architessa_images_downloaded/porcelain-slabs-panels-porcelain-slabs-panels-architessa.jpg',
+    'Mid-Century Modern': '/architessa_images_downloaded/wood-look-wood-look-architessa.jpg',
+    'Bohemian': '/architessa_images_downloaded/terracotta-cotto-look-terracotta-cotto-look-architessa.jpg'
+  }
+}
+
 export default function QuizPage() {
   const [showWelcome, setShowWelcome] = useState(true)
   const [currentQuestion, setCurrentQuestion] = useState(0)
@@ -148,16 +187,22 @@ export default function QuizPage() {
             </div>
 
             <div className="grid md:grid-cols-5 gap-4 mb-16 max-w-4xl mx-auto">
-              {['Farmhouse', 'Coastal', 'Minimalist', 'Mid-Century', 'Bohemian'].map((style, i) => (
-                <div key={style} className="relative aspect-square rounded-lg overflow-hidden">
+              {[
+                { name: 'Farmhouse', image: '/architessa_images_downloaded/farmhouse-farmhouse-architessa.jpg' },
+                { name: 'Coastal', image: '/architessa_images_downloaded/coastal-coastal-architessa.jpg' },
+                { name: 'Minimalist', image: '/architessa_images_downloaded/minimalist-minimalist-architessa.webp' },
+                { name: 'Mid-Century', image: '/architessa_images_downloaded/mid-century-modern-mid-century-modern-architessa.png' },
+                { name: 'Bohemian', image: '/architessa_images_downloaded/bohemian-bohemian-architessa.jpg' }
+              ].map((style) => (
+                <div key={style.name} className="relative aspect-square rounded-lg overflow-hidden group">
                   <Image
-                    src={quizQuestions[0].options[i].image || '/images/function.png'}
-                    alt={style}
+                    src={style.image}
+                    alt={style.name}
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-raisin-black/60 to-transparent flex items-end p-3">
-                    <span className="text-white text-xs font-medium">{style}</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-raisin-black/70 to-transparent flex items-end justify-center p-3">
+                    <span className="text-alabaster text-sm font-medium">{style.name}</span>
                   </div>
                 </div>
               ))}
@@ -217,22 +262,6 @@ export default function QuizPage() {
               </h2>
             </motion.div>
 
-            {/* Hero Image */}
-            {matchingProjects[0] && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="relative rounded-lg overflow-hidden mb-12 aspect-[16/9]"
-              >
-                <Image
-                  src={matchingProjects[0].images.after}
-                  alt={dominantStyle}
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-            )}
 
             <div className="grid md:grid-cols-2 gap-12 mb-12">
               {/* Description */}
@@ -300,41 +329,6 @@ export default function QuizPage() {
               </motion.div>
             </div>
 
-            {/* Matching Projects */}
-            {matchingProjects.length > 0 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="mb-12"
-              >
-                <h3 className="text-3xl font-serif text-raisin-black mb-8 text-center">
-                  Inspired by Your Style
-                </h3>
-                <div className="grid md:grid-cols-3 gap-8">
-                  {matchingProjects.map((project) => (
-                    <Link
-                      key={project.id}
-                      href="/portfolio"
-                      className="group"
-                    >
-                      <div className="relative aspect-[4/5] rounded-lg overflow-hidden mb-4">
-                        <Image
-                          src={project.images.after}
-                          alt={project.title}
-                          fill
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                      </div>
-                      <h4 className="text-lg font-serif text-raisin-black group-hover:text-philippine-gold transition-colors">
-                        {project.title}
-                      </h4>
-                      <p className="text-sm text-raisin-black/60">{project.category}</p>
-                    </Link>
-                  ))}
-                </div>
-              </motion.div>
-            )}
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -401,36 +395,36 @@ export default function QuizPage() {
               {question.question}
             </h2>
 
-            <div className="grid gap-6">
-              {question.options.map((option, index) => (
-                <motion.button
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  onClick={() => handleAnswer(option.style, index)}
-                  disabled={selectedOption !== null}
-                  className={`group relative w-full bg-white rounded-lg overflow-hidden border-2 transition-all duration-300
-                    ${selectedOption === index
-                      ? 'border-philippine-gold shadow-lg scale-[1.02]'
-                      : 'border-transparent hover:border-philippine-gold/50 hover:shadow-md'
-                    }
-                    ${selectedOption !== null && selectedOption !== index ? 'opacity-50' : ''}
-                  `}
-                >
-                  <div className="grid md:grid-cols-[200px_1fr] gap-6 items-center p-6">
-                    {/* Image */}
-                    <div className="relative aspect-square rounded-lg overflow-hidden">
-                      <Image
-                        src={option.image || '/images/function.png'}
-                        alt={option.label}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-
-                    {/* Text */}
-                    <div className="flex items-center justify-between gap-4">
+            <div className="grid md:grid-cols-2 gap-6">
+              {question.options.map((option, index) => {
+                const imageUrl = quizImages[currentQuestion]?.[option.style]
+                return (
+                  <motion.button
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    onClick={() => handleAnswer(option.style, index)}
+                    disabled={selectedOption !== null}
+                    className={`group relative w-full bg-white rounded-lg overflow-hidden border-2 transition-all duration-300
+                      ${selectedOption === index
+                        ? 'border-philippine-gold shadow-lg scale-[1.02]'
+                        : 'border-transparent hover:border-philippine-gold/50 hover:shadow-md'
+                      }
+                      ${selectedOption !== null && selectedOption !== index ? 'opacity-50' : ''}
+                    `}
+                  >
+                    {imageUrl && (
+                      <div className="relative w-full aspect-[4/3]">
+                        <Image
+                          src={imageUrl}
+                          alt={option.style}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="flex items-center justify-between gap-4 p-6">
                       <span className="text-lg md:text-xl text-raisin-black group-hover:text-philippine-gold transition-colors text-left">
                         {option.label}
                       </span>
@@ -441,9 +435,9 @@ export default function QuizPage() {
                         <ChevronRight className="w-6 h-6 text-raisin-black/30 group-hover:text-philippine-gold group-hover:translate-x-1 transition-all flex-shrink-0" />
                       )}
                     </div>
-                  </div>
-                </motion.button>
-              ))}
+                  </motion.button>
+                )
+              })}
             </div>
           </motion.div>
         </AnimatePresence>

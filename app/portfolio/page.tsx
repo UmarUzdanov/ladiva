@@ -6,11 +6,28 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { projects } from '@/lib/data'
 
+type FilterItem = {
+  name: string
+  image: string
+  type: 'category' | 'style'
+}
+
 export default function PortfolioPage() {
   const [filter, setFilter] = useState<string>('All')
 
-  const categories = ['All', 'Kitchen', 'Bathroom', 'Fireplace', 'Backsplash', 'Laundry Room']
-  const styles = ['All', 'Farmhouse', 'Coastal', 'Minimalist & Modern', 'Mid-Century Modern', 'Bohemian']
+  const filterOptions: FilterItem[] = [
+    { name: 'All', image: '/architessa_images_downloaded/all-products.png', type: 'category' },
+    { name: 'Kitchen', image: '/architessa_images_downloaded/kitchen.jpg', type: 'category' },
+    { name: 'Bathroom', image: '/architessa_images_downloaded/bathroom-floor-bathroom-floor-architessa.png', type: 'category' },
+    { name: 'Fireplace', image: '/architessa_images_downloaded/fireplace-surround-fireplace-surround-architessa.png', type: 'category' },
+    { name: 'Backsplash', image: '/architessa_images_downloaded/backsplash-backsplash-architessa.png', type: 'category' },
+    { name: 'Laundry Room', image: '/architessa_images_downloaded/all-interior-floor-all-interior-floor-architessa.png', type: 'category' },
+    { name: 'Farmhouse', image: '/architessa_images_downloaded/farmhouse-farmhouse-architessa.jpg', type: 'style' },
+    { name: 'Coastal', image: '/architessa_images_downloaded/coastal-coastal-architessa.jpg', type: 'style' },
+    { name: 'Minimalist & Modern', image: '/architessa_images_downloaded/minimalist-minimalist-architessa.webp', type: 'style' },
+    { name: 'Mid-Century Modern', image: '/architessa_images_downloaded/mid-century-modern-mid-century-modern-architessa.png', type: 'style' },
+    { name: 'Bohemian', image: '/architessa_images_downloaded/bohemian-bohemian-architessa.jpg', type: 'style' },
+  ]
 
   const filteredProjects = projects.filter((project) => {
     if (filter === 'All') return true
@@ -52,19 +69,47 @@ export default function PortfolioPage() {
           transition={{ duration: 0.8 }}
           className="max-w-7xl mx-auto"
         >
-          <div className="flex flex-wrap justify-center gap-3">
-            {[...categories, ...styles.filter((s) => s !== 'All')].map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`px-6 py-3 rounded-sm text-sm font-medium transition-all duration-300 ${
-                  filter === cat
-                    ? 'bg-philippine-gold text-alabaster shadow-lg'
-                    : 'bg-alabaster text-raisin-black hover:bg-philippine-gold/10'
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {filterOptions.map((option, index) => (
+              <motion.button
+                key={option.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                onClick={() => setFilter(option.name)}
+                className={`group relative aspect-square rounded-lg overflow-hidden transition-all duration-300 ${
+                  filter === option.name
+                    ? 'ring-4 ring-philippine-gold shadow-xl scale-105'
+                    : 'ring-2 ring-transparent hover:ring-philippine-gold/50 hover:shadow-lg'
                 }`}
               >
-                {cat}
-              </button>
+                <Image
+                  src={option.image}
+                  alt={option.name}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
+                />
+                <div className={`absolute inset-0 bg-gradient-to-t from-raisin-black/80 via-raisin-black/40 to-transparent flex items-end p-3 transition-opacity duration-300 ${
+                  filter === option.name ? 'opacity-100' : 'opacity-90 group-hover:opacity-100'
+                }`}>
+                  <span className="text-white text-xs md:text-sm font-medium leading-tight">
+                    {option.name}
+                  </span>
+                </div>
+                {filter === option.name && (
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="absolute top-2 right-2 w-6 h-6 bg-philippine-gold rounded-full flex items-center justify-center"
+                  >
+                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </motion.div>
+                )}
+              </motion.button>
             ))}
           </div>
         </motion.div>
